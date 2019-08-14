@@ -18,7 +18,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 class FenixProperties {
 
     /**
-     * 是否开启调试模式，如果开启的话，每次调用都会实时从最新的 xml 文件中获取 SQL，默认值为 false.
+     * 是否开启调试模式，默认值为 false，不建议开启此配置项，如果开启的话，每次调用都会实时从最新的 xml 文件中获取 SQL.
      */
     private Boolean debug;
 
@@ -28,19 +28,17 @@ class FenixProperties {
     private Boolean printBanner;
 
     /**
-     * 是否打印 Fenix SQL 的日志（INFO 级别的日志），默认为 true.
+     * 是否打印 Fenix 的 SQL 的日志（INFO 级别），默认为 true.
      */
     private Boolean printSql;
 
     /**
-     * Fenix 需要扫描的 XML 文件所在的位置，可以填写多个，多个用逗号隔开，可以是目录也可以是具体的 xml 文件，
-     * 默认是 fenix 资源目录及子目录下的位置.
+     * 需要扫描的 XML 文件的位置，可以是目录也可以是具体的 XML 文件，不配置的话默认是 fenix 资源目录及其子目录下的位置，可以填写多个值.
      */
     private List<String> xmlLocations;
 
     /**
-     * Fenix 需要扫描的自定义 handler 处理器所在的位置，可以填写多个，多个用逗号隔开，
-     * 可以是目录也可以是具体的 java 或 class 文件路径.
+     * 需要扫描的自定义 handler 处理器所在的位置，可以是目录也可以是具体的 java 或 class 文件全路径，可以填写多个值.
      */
     private List<String> handlerLocations;
 
