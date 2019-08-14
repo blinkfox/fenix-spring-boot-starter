@@ -18,17 +18,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class FenixProperties {
 
     /**
-     * 是否开启调试模式，如果开启的话，每次调用都会实时从最新的xml文件中获取sql，默认值为false.
+     * 是否开启调试模式，如果开启的话，每次调用都会实时从最新的 xml 文件中获取 SQL，默认值为 false.
      */
     private boolean debug;
 
     /**
-     * 是否打印zealot的启动banner，默认为true.
+     * 是否打印 Fenix 加载完配置信息后的启动 banner，默认为 true.
      */
     private boolean printBanner;
 
     /**
-     * 是否打印zealot的sql日志，默认为true.
+     * 是否打印 Fenix SQL 的日志（INFO 级别的日志），默认为 true.
      */
     private boolean printSql;
 

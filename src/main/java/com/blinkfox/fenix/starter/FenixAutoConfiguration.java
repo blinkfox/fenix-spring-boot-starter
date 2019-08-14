@@ -15,19 +15,21 @@ import org.springframework.util.CollectionUtils;
  * Fenix 自动配置类.
  *
  * @author blinkfox on 2019-08-14.
+ * @see FenixProperties
  */
 @Configuration
 @EnableConfigurationProperties(FenixProperties.class)
 public class FenixAutoConfiguration {
 
     /**
-     * FenixProperties 属性配置类的实例.
+     * {@link FenixProperties} 属性配置类的实例.
      */
     private FenixProperties properties;
 
     /**
      * 构造方法.
-     * @param properties Zealot的属性配置对象
+     *
+     * @param properties {@link FenixProperties} 的属性配置对象
      */
     @Autowired
     public FenixAutoConfiguration(FenixProperties properties) {
