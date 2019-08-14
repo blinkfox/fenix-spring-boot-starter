@@ -15,22 +15,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 @ConfigurationProperties("fenix")
-public class FenixProperties {
+class FenixProperties {
 
     /**
      * 是否开启调试模式，如果开启的话，每次调用都会实时从最新的 xml 文件中获取 SQL，默认值为 false.
      */
-    private boolean debug;
+    private Boolean debug;
 
     /**
      * 是否打印 Fenix 加载完配置信息后的启动 banner，默认为 true.
      */
-    private boolean printBanner;
+    private Boolean printBanner;
 
     /**
      * 是否打印 Fenix SQL 的日志（INFO 级别的日志），默认为 true.
      */
-    private boolean printSql;
+    private Boolean printSql;
 
     /**
      * Fenix 需要扫描的 XML 文件所在的位置，可以填写多个，多个用逗号隔开，可以是目录也可以是具体的 xml 文件，
@@ -43,13 +43,5 @@ public class FenixProperties {
      * 可以是目录也可以是具体的 java 或 class 文件路径.
      */
     private List<String> handlerLocations;
-
-    /**
-     * 构造方法，构造对象时赋予默认值.
-     */
-    public FenixProperties() {
-        this.printBanner = true;
-        this.printSql = true;
-    }
 
 }

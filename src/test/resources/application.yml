@@ -1,0 +1,11 @@
+# fenix config.
+fenix:
+  debug:
+  print-banner: true
+  print-sql: false
+  xml-locations:
+    - fenix
+    - myxml
+  handler-locations:
+    - com.blinkfox.fenix.starter.handler
+    - com.blinkfox.fenix.myhandler
