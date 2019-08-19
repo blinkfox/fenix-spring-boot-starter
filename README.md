@@ -1,10 +1,12 @@
 # Fenix SpringBoot Starter
 
+[![Build Status](https://secure.travis-ci.org/blinkfox/fenix-spring-boot-starter.svg)](https://travis-ci.org/blinkfox/fenix-spring-boot-starter) [![HitCount](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter.svg)](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter) [![Javadocs](http://www.javadoc.io/badge/com.blinkfox/fenix-spring-boot-starter.svg)](http://www.javadoc.io/doc/com.blinkfox/fenix-spring-boot-starter) [![GitHub license](https://img.shields.io/github/license/blinkfox/fenix-spring-boot-starter.svg)](https://github.com/blinkfox/fenix-spring-boot-starter/blob/develop/LICENSE) [![fenix](https://img.shields.io/badge/fenix-v1.0.0-blue)](https://search.maven.org/artifact/com.blinkfox/fenix/1.0.0/jar) [![fenix starter](https://img.shields.io/badge/fenix%20spring%20boot%20starter-v1.0.0-blue)](https://search.maven.org/artifact/com.blinkfox/fenix-spring-boot-starter/1.0.0/jar) [![codecov](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter/branch/develop/graph/badge.svg)](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter)
+
 这是 Fenix 的 Spring Boot Starter 库。
 
 > [Fenix](https://github.com/blinkfox/fenix)（菲尼克斯）是一个为了解决复杂动态 SQL (`JPQL`) 而生的 `Spring Data JPA` 扩展库，目的是辅助开发者更方便快捷的书写复杂、动态且易于维护的 SQL，支持 `XML` 和 Java 链式 `API` 两种方式来书写动态 SQL。
 
-- [详细使用文档](https://blinkfox.github.io/fenix)
+- [详细使用文档: https://blinkfox.github.io/fenix](https://blinkfox.github.io/fenix)
 
 ## 特性
 
@@ -46,12 +48,6 @@ compile 'com.blinkfox:fenix-spring-boot-starter:1.0.0'
 `repositoryFactoryBeanClass` 的属性值为 `FenixJpaRepositoryFactoryBean.class`。
 
 ```java
-import com.blinkfox.fenix.jpa.FenixJpaRepositoryFactoryBean;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
 /**
  * 请在 Spring Boot 应用中配置 {@link EnableJpaRepositories#repositoryFactoryBeanClass}
  * 的值为 {@link FenixJpaRepositoryFactoryBean}.
@@ -143,4 +139,4 @@ XML 文件中的 SQL:
 
 ## 开源许可证
 
-本 `Fenix` 的 Spring Data JPA 扩展库遵守 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0) 许可证。
+本 `Fenix` 的 Spring Data JPA 扩展库使用 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0) 许可证。
