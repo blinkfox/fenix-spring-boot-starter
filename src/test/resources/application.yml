@@ -1,6 +1,5 @@
 # fenix config.
 fenix:
-  debug:
   print-banner: true
   print-sql: false
   xml-locations:

@@ -41,19 +41,19 @@ public class FenixAutoConfiguration {
      * 根据 properties 中的配置项做 Fenix 的配置.
      */
     private void doConfig() {
+        // 获取配置值.
         Boolean printBanner = this.properties.getPrintBanner();
         Boolean printSql = this.properties.getPrintSql();
         List<String> xmlLocations = this.properties.getXmlLocations();
         List<String> handlerLocations = this.properties.getHandlerLocations();
 
         // 配置常规信息、 xml 和 handler 的扫描路径.
-        FenixConfigManager.getInstance().initLoad(
-                new FenixConfig()
-                        .setDebug(Boolean.TRUE.equals(this.properties.getDebug()))
-                        .setPrintBanner(printBanner == null || Boolean.TRUE.equals(printBanner))
-                        .setPrintSqlInfo(printSql == null || Boolean.TRUE.equals(printSql)),
-                CollectionUtils.isEmpty(xmlLocations) ? null : String.join(Const.COMMA, xmlLocations),
-                CollectionUtils.isEmpty(handlerLocations) ? null : String.join(Const.COMMA, handlerLocations));
+        FenixConfigManager.getInstance().initLoad(new FenixConfig()
+                .setPrintBanner(printBanner == null || Boolean.TRUE.equals(printBanner))
+                .setPrintSqlInfo(printSql == null || Boolean.TRUE.equals(printSql))
+                .setXmlLocations(CollectionUtils.isEmpty(xmlLocations) ? null : String.join(Const.COMMA, xmlLocations))
+                .setHandlerLocations(CollectionUtils.isEmpty(handlerLocations) ? null
+                        : String.join(Const.COMMA, handlerLocations)));
     }
 
 }

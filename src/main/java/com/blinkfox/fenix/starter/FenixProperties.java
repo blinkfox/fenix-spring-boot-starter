@@ -18,11 +18,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 class FenixProperties {
 
     /**
-     * 是否开启调试模式，默认值为 false，不建议开启此配置项，如果开启的话，每次调用都会实时从最新的 xml 文件中获取 SQL.
-     */
-    private Boolean debug;
-
-    /**
      * 是否打印 Fenix 加载完配置信息后的启动 banner，默认为 true.
      */
     private Boolean printBanner;

@@ -2,7 +2,6 @@ package com.blinkfox.fenix.starter;
 
 import com.blinkfox.fenix.config.FenixConfig;
 import com.blinkfox.fenix.config.FenixConfigManager;
-import com.blinkfox.fenix.config.entity.NormalConfig;
 import com.blinkfox.fenix.helper.StringHelper;
 
 import org.junit.Assert;
@@ -25,16 +24,14 @@ public class FenixStarterApplicationTest {
      */
     @Test
     public void testFenixConfig() {
-        // 测试 normalConfig.
-        NormalConfig normalConfig = NormalConfig.getInstance();
-        Assert.assertFalse(normalConfig.isDebug());
-        Assert.assertTrue(normalConfig.isPrintBanner());
-        Assert.assertFalse(normalConfig.isPrintSqlInfo());
+        // 测试常规配置.
+        FenixConfig fenixConfig = FenixConfigManager.getInstance().getFenixConfig();
+        Assert.assertTrue(fenixConfig.isPrintBanner());
+        Assert.assertFalse(fenixConfig.isPrintSqlInfo());
 
         // 测试扫描位置的配置.
-        FenixConfigManager configManager = FenixConfigManager.getInstance();
-        Assert.assertEquals("fenix,myxml", configManager.getXmlLocations());
-        Assert.assertTrue(StringHelper.isNotBlank(configManager.getHandlerLocations()));
+        Assert.assertEquals("fenix,myxml", fenixConfig.getXmlLocations());
+        Assert.assertTrue(StringHelper.isNotBlank(fenixConfig.getHandlerLocations()));
 
         // 测试 xml 和 handler 的扫描的结果是否正确存储到了内存中.
         Assert.assertFalse(FenixConfig.getTagHandlerMap().isEmpty());
