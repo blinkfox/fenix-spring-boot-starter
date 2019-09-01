@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -26,6 +27,12 @@ class FenixProperties {
      * 是否打印 Fenix 的 SQL 的日志（INFO 级别），默认为 true.
      */
     private Boolean printSql;
+
+    /**
+     * 读取 Spring Data JPA Starter 中是否显示 SQL 的配置项.
+     */
+    @Value("${spring.jpa.show-sql:#{null}}")
+    private Boolean showJpaSql;
 
     /**
      * 需要扫描的 XML 文件的位置，可以是目录也可以是具体的 XML 文件，不配置的话默认是 fenix 资源目录及其子目录下的位置，可以填写多个值.

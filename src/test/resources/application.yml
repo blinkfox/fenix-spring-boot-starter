@@ -1,7 +1,7 @@
 # fenix config.
 fenix:
   print-banner: true
-  print-sql: false
+  print-sql:
   xml-locations:
     - fenix
     - myxml

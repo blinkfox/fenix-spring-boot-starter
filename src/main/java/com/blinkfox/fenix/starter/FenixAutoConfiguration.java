@@ -44,13 +44,15 @@ public class FenixAutoConfiguration {
         // 获取配置值.
         Boolean printBanner = this.properties.getPrintBanner();
         Boolean printSql = this.properties.getPrintSql();
+        Boolean showJpaSql = this.properties.getShowJpaSql();
         List<String> xmlLocations = this.properties.getXmlLocations();
         List<String> handlerLocations = this.properties.getHandlerLocations();
 
         // 配置常规信息、 xml 和 handler 的扫描路径.
+        // 如果未配置 printSql，则使用 jpa 中 show-sql 的配置值，否则使用 printSql 的值.
         FenixConfigManager.getInstance().initLoad(new FenixConfig()
                 .setPrintBanner(printBanner == null || Boolean.TRUE.equals(printBanner))
-                .setPrintSqlInfo(printSql == null || Boolean.TRUE.equals(printSql))
+                .setPrintSqlInfo(printSql == null ? Boolean.TRUE.equals(showJpaSql) : Boolean.TRUE.equals(printSql))
                 .setXmlLocations(CollectionUtils.isEmpty(xmlLocations) ? null : String.join(Const.COMMA, xmlLocations))
                 .setHandlerLocations(CollectionUtils.isEmpty(handlerLocations) ? null
                         : String.join(Const.COMMA, handlerLocations)));
