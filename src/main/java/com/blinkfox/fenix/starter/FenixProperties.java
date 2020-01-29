@@ -44,4 +44,11 @@ class FenixProperties {
      */
     private List<String> handlerLocations;
 
+    /**
+     * 继承了 {@link com.blinkfox.fenix.specification.handler.AbstractPredicateHandler} 抽象类的自定义的 handler 处理器的全路径名的集合.
+     *
+     * @since v2.2.0
+     */
+    private List<String> predicateHandlers;
+
 }

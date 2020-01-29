@@ -3,8 +3,12 @@ package com.blinkfox.fenix.starter;
 import com.blinkfox.fenix.config.FenixConfig;
 import com.blinkfox.fenix.config.FenixConfigManager;
 import com.blinkfox.fenix.consts.Const;
+import com.blinkfox.fenix.specification.handler.AbstractPredicateHandler;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,6 +21,7 @@ import org.springframework.util.CollectionUtils;
  * @author blinkfox on 2019-08-14.
  * @see FenixProperties
  */
+@Slf4j
 @Configuration
 @EnableConfigurationProperties(FenixProperties.class)
 public class FenixAutoConfiguration {
@@ -56,6 +61,34 @@ public class FenixAutoConfiguration {
                 .setXmlLocations(CollectionUtils.isEmpty(xmlLocations) ? null : String.join(Const.COMMA, xmlLocations))
                 .setHandlerLocations(CollectionUtils.isEmpty(handlerLocations) ? null
                         : String.join(Const.COMMA, handlerLocations)));
+
+        // 如果自定义的 predicateHandlers 不为空，就初始化设置值到 配置信息中.
+        List<String> predicateHandlers = this.properties.getPredicateHandlers();
+        if (!CollectionUtils.isEmpty(predicateHandlers)) {
+            for (String handlerName : predicateHandlers) {
+                AbstractPredicateHandler handler = this.newHandlerInstance(handlerName.trim());
+                if (handler != null) {
+                    FenixConfig.add(handler);
+                }
+            }
+        }
+    }
+
+    /**
+     * 根据全路径名称实例化对象，并转换为 {@link AbstractPredicateHandler} 类型的实例.
+     *
+     * @param handlerName {@link AbstractPredicateHandler} 子类的全路径名
+     * @return {@link AbstractPredicateHandler} 类型的实例
+     */
+    private AbstractPredicateHandler newHandlerInstance(String handlerName) {
+        try {
+            Object instance = Class.forName(handlerName).getDeclaredConstructor().newInstance();
+            return instance instanceof AbstractPredicateHandler ? (AbstractPredicateHandler) instance : null;
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException
+                | NoSuchMethodException | ClassNotFoundException e) {
+            log.error("【Fenix 异常】实例化【{}】类的对象失败，将忽略此类的实例化。", handlerName, e);
+            return null;
+        }
     }
 
 }
