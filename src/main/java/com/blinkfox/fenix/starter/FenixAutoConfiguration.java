@@ -29,7 +29,7 @@ public class FenixAutoConfiguration {
     /**
      * {@link FenixProperties} 属性配置类的实例.
      */
-    private FenixProperties properties;
+    private final FenixProperties properties;
 
     /**
      * 构造方法.
