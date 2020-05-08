@@ -3,7 +3,6 @@ package com.blinkfox.fenix.starter;
 import com.blinkfox.fenix.config.FenixConfig;
 import com.blinkfox.fenix.config.FenixConfigManager;
 import com.blinkfox.fenix.helper.StringHelper;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

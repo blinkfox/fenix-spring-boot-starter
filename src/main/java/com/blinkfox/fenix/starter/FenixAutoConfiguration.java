@@ -4,12 +4,9 @@ import com.blinkfox.fenix.config.FenixConfig;
 import com.blinkfox.fenix.config.FenixConfigManager;
 import com.blinkfox.fenix.consts.Const;
 import com.blinkfox.fenix.specification.handler.AbstractPredicateHandler;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

@@ -1,10 +1,8 @@
 package com.blinkfox.fenix.starter;
 
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
