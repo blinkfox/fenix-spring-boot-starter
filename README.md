@@ -1,6 +1,6 @@
 # Fenix SpringBoot Starter
 
-[![Build Status](https://secure.travis-ci.org/blinkfox/fenix-spring-boot-starter.svg)](https://travis-ci.org/blinkfox/fenix-spring-boot-starter) [![HitCount](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter.svg)](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter) [![Javadocs](http://www.javadoc.io/badge/com.blinkfox/fenix-spring-boot-starter.svg)](http://www.javadoc.io/doc/com.blinkfox/fenix-spring-boot-starter) [![GitHub license](https://img.shields.io/github/license/blinkfox/fenix-spring-boot-starter.svg)](https://github.com/blinkfox/fenix-spring-boot-starter/blob/develop/LICENSE) [![fenix](https://img.shields.io/badge/fenix-v2.3.2-blue)](https://search.maven.org/artifact/com.blinkfox/fenix/2.3.2/jar) [![fenix starter](https://img.shields.io/badge/fenix%20spring%20boot%20starter-v2.3.2-blue)](https://search.maven.org/artifact/com.blinkfox/fenix-spring-boot-starter/2.3.2/jar) [![codecov](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter/branch/develop/graph/badge.svg)](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter)
+[![Build Status](https://secure.travis-ci.org/blinkfox/fenix-spring-boot-starter.svg)](https://travis-ci.org/blinkfox/fenix-spring-boot-starter) [![HitCount](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter.svg)](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter) [![Javadocs](http://www.javadoc.io/badge/com.blinkfox/fenix-spring-boot-starter.svg)](http://www.javadoc.io/doc/com.blinkfox/fenix-spring-boot-starter) [![GitHub license](https://img.shields.io/github/license/blinkfox/fenix-spring-boot-starter.svg)](https://github.com/blinkfox/fenix-spring-boot-starter/blob/develop/LICENSE) [![fenix](https://img.shields.io/badge/fenix-v2.3.3-blue)](https://search.maven.org/artifact/com.blinkfox/fenix/2.3.3/jar) [![fenix starter](https://img.shields.io/badge/fenix%20spring%20boot%20starter-v2.3.3-blue)](https://search.maven.org/artifact/com.blinkfox/fenix-spring-boot-starter/2.3.3/jar) [![codecov](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter/branch/develop/graph/badge.svg)](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter)
 
 这是 Fenix 的 Spring Boot Starter 库。
 
@@ -10,7 +10,7 @@
 
 ## 一、特性
 
-- 简单、轻量级、无副作用的集成和使用，jar 包仅 `176 KB`；
+- 简单、轻量级、无副作用的集成和使用，jar 包仅 `177 KB`；
 - 作为 JPA 的扩展和增强，兼容 Spring Data JPA 原有功能和各种特性；
 - 提供了 `XML`、Java 链式 `API` 和动态条件注解等四种方式来书写动态 SQL；
 - `XML` 的方式功能强大，让 SQL 和 Java 代码解耦，易于维护；
@@ -38,14 +38,14 @@
 <dependency>
     <groupId>com.blinkfox</groupId>
     <artifactId>fenix-spring-boot-starter</artifactId>
-    <version>2.3.2</version>
+    <version>2.3.3</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```bash
-compile 'com.blinkfox:fenix-spring-boot-starter:2.3.2'
+compile 'com.blinkfox:fenix-spring-boot-starter:2.3.3'
 ```
 
 ### 激活 Fenix (@EnableFenix)
@@ -68,7 +68,9 @@ public class DemoApplication {
 }
 ```
 
-> **注**： `@EnableFenix` 注解中实质上是使用的是 `FenixJpaRepositoryFactoryBean`。而 `FenixJpaRepositoryFactoryBean` 继承自 Spring Data JPA 默认的 `JpaRepositoryFactoryBean`。所以，Fenix 与 JPA 的各种注解和特性完全兼容，并提供了更加强大的 `@QueryFenix` 注解和其他更多动态的能力。
+> **注**： 
+> 1. `@EnableFenix` 注解中实质上是使用的是 `FenixJpaRepositoryFactoryBean`。而 `FenixJpaRepositoryFactoryBean` 继承自 Spring Data JPA 默认的 `JpaRepositoryFactoryBean`。所以，Fenix 与 JPA 的各种注解和特性完全兼容，并提供了更加强大的 `@QueryFenix` 注解和其他更多动态的能力。
+> 2. 如果你是多数据源，则你可以根据自身情况，在需要的数据源中的 `@EnableJpaRepositories` 注解中单独设置 `repositoryFactoryBeanClass` 的值为：`FenixJpaRepositoryFactoryBean.class`。示例如：`@EnableJpaRepositories(repositoryFactoryBeanClass = FenixJpaRepositoryFactoryBean.class)`。
 
 ### application.yml 配置（可选的）
 
