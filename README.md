@@ -1,15 +1,14 @@
-# Fenix SpringBoot Starter
+# 🔥 Fenix SpringBoot Starter
+
+<div align="center"><img style="display: block; margin: 0 auto;" src="https://blinkfox.github.io/fenix/assets/images/logo.png" alt="fenix logo" /></div>
 
 [![Build Status](https://secure.travis-ci.org/blinkfox/fenix-spring-boot-starter.svg)](https://travis-ci.org/blinkfox/fenix-spring-boot-starter) [![HitCount](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter.svg)](http://hits.dwyl.io/blinkfox/fenix-spring-boot-starter) [![Javadocs](http://www.javadoc.io/badge/com.blinkfox/fenix-spring-boot-starter.svg)](http://www.javadoc.io/doc/com.blinkfox/fenix-spring-boot-starter) [![GitHub license](https://img.shields.io/github/license/blinkfox/fenix-spring-boot-starter.svg)](https://github.com/blinkfox/fenix-spring-boot-starter/blob/develop/LICENSE) [![fenix](https://img.shields.io/badge/fenix-v2.3.4-blue)](https://search.maven.org/artifact/com.blinkfox/fenix/2.3.4/jar) [![fenix starter](https://img.shields.io/badge/fenix%20spring%20boot%20starter-v2.3.4-blue)](https://search.maven.org/artifact/com.blinkfox/fenix-spring-boot-starter/2.3.4/jar) [![codecov](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter/branch/develop/graph/badge.svg)](https://codecov.io/gh/blinkfox/fenix-spring-boot-starter)
 
-这是 Fenix 的 Spring Boot Starter 库。
+> 这是 `Fenix` 的 Spring Boot Starter 库。
 
-> [Fenix](https://github.com/blinkfox/fenix)（菲尼克斯）是一个为了解决复杂动态 SQL (`JPQL`) 而生的 `Spring Data JPA` 扩展库，目的是辅助开发者更方便快捷的书写复杂、动态且易于维护的 SQL，支持 `XML`、Java 链式 `API` 和动态条件注解等四种方式来书写动态 SQL。
+[📖 使用文档](https://blinkfox.github.io/fenix)    |    [🍉 示例项目 (fenix-example)](https://github.com/blinkfox/fenix-example)
 
-- [详细使用文档: https://blinkfox.github.io/fenix](https://blinkfox.github.io/fenix)
-- [示例项目 (fenix-example)](https://github.com/blinkfox/fenix-example)
-
-## 一、特性
+## 💎 特性
 
 - 简单、轻量级、无副作用的集成和使用，jar 包仅 `177 KB`；
 - 作为 JPA 的扩展和增强，兼容 Spring Data JPA 原有功能和各种特性；
@@ -21,11 +20,11 @@
 - SQL 执行结果可返回任意自定义的实体对象，比使用 JPA 自身的投影方式更加简单和自然；
 - 具有可扩展性，如：可自定义 `XML` 语义标签和对应的标签处理器来生成自定义逻辑的 SQL 片段和参数；
 
-## 二、支持场景
+## ✔️ 支持场景
 
 适用于 Java `Spring Data JPA` 项目，`JDK 1.8` 及以上，Spring Data JPA 的版本须保证 `2.1.8.RELEASE` 及以上；如果你是 Spring Boot 项目，则 Spring Boot 的版本须保证 `2.1.5.RELEASE` 及以上。因为后续版本的 Spring Data JPA 对其中 `QueryLookupStrategy` 的代码有较大改动。
 
-## 三、Spring Boot 项目集成
+## 🌱 Spring Boot 项目集成
 
 如果你是 Spring Boot 项目，那么直接集成 `fenix-spring-boot-starter` 库，并使用 `@EnableFenix` 激活 Fenix 的相关配置信息。
 
@@ -100,7 +99,7 @@ fenix:
   predicate-handlers:
 ```
 
-## 四、示例概览
+## 🍔 示例概览
 
 Fenix 中支持四种方式书写动态 SQL，分别是：
 
@@ -111,7 +110,7 @@ Fenix 中支持四种方式书写动态 SQL，分别是：
 
 以下的四种方式的示例均以博客信息数据作为示例，你可以根据自己的场景或喜欢的方式来选择动态查询的方式。关于详细的使用文档可以[参看文档](https://blinkfox.github.io/fenix/#/)。
 
-### 1. 基于 JPQL (或 SQL) 的 XML 方式
+### 1. 🍖 基于 JPQL (或 SQL) 的 XML 方式
 
 在 `BlogRepository` 中的查询方法使用 `QueryFenix` 注解，用来分页查询博客信息数据：
 
@@ -180,7 +179,7 @@ public void queryMyBlogs() {
 }
 ```
 
-### 2. 基于 JPQL (或 SQL) 的 Java API 方式
+### 2. 🍟 基于 JPQL (或 SQL) 的 Java API 方式
 
 在 `BlogRepository` 中的查询方法使用 `QueryFenix` 注解，用来查询所有符合条件的博客信息数据：
 
@@ -255,7 +254,7 @@ public void queryBlogsWithJava() {
 }
 ```
 
-### 3. 基于 Specification 的 Java API 方式
+### 3. 🍭 基于 Specification 的 Java API 方式
 
 基于 `Specification` 的方式，只须要 `BlogRepository` 接口继承 `FenixJpaSpecificationExecutor` 接口即可。
 
@@ -298,7 +297,7 @@ public void queryBlogsWithSpecifition() {
 }
 ```
 
-### 4. 基于 Specification 的 Java Bean 注解方式
+### 4. 🥯 基于 Specification 的 Java Bean 注解方式
 
 本方式是指通过将 Java Bean 作为参数传递，在 Java Bean 对象的属性中通过查询的条件注解来表明是何种查询匹配方式。当然，同第三种方式一样，`BlogRepository` 接口也须要继承 `FenixJpaSpecificationExecutor` 接口。
 
@@ -384,10 +383,10 @@ public void queryBlogsWithAnnotaion() {
 }
 ```
 
-## 五、开源许可证
+## 📝 开源许可证
 
 本 `Fenix` 的 Spring Data JPA 扩展库遵守 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0) 许可证。
 
-## 六、鸣谢
+## 🙏 鸣谢
 
 感谢 [JetBrains 公司](https://www.jetbrains.com/?from=fenix) 为本开源项目提供的免费正版 Intellij IDEA 的 License 支持。
