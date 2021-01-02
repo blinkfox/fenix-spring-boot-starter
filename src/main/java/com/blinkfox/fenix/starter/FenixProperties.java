@@ -17,6 +17,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 class FenixProperties {
 
     /**
+     * 是否开启 debug 模式.
+     *
+     * @since v2.4.1
+     */
+    private Boolean debug = false;
+
+    /**
      * 是否打印 Fenix 加载完配置信息后的启动 banner，默认为 true.
      */
     private Boolean printBanner;

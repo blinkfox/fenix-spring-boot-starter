@@ -22,6 +22,7 @@ class FenixStarterApplicationTest {
     void testFenixConfig() {
         // 测试常规配置.
         FenixConfig fenixConfig = FenixConfigManager.getInstance().getFenixConfig();
+        Assertions.assertFalse(fenixConfig.isDebug());
         Assertions.assertTrue(fenixConfig.isPrintBanner());
         Assertions.assertFalse(fenixConfig.isPrintSqlInfo());
 
