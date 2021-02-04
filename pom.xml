@@ -5,7 +5,7 @@
 
     <groupId>com.blinkfox</groupId>
     <artifactId>fenix-spring-boot-starter</artifactId>
-    <version>2.4.2-SNAPSHOT</version>
+    <version>2.4.2</version>
     <packaging>jar</packaging>
 
     <name>fenix-spring-boot-starter</name>
