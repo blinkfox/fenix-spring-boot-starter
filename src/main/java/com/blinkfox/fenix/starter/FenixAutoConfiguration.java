@@ -1,5 +1,6 @@
 package com.blinkfox.fenix.starter;
 
+import com.blinkfox.fenix.ar.RepositoryModelContext;
 import com.blinkfox.fenix.config.FenixConfig;
 import com.blinkfox.fenix.config.FenixConfigManager;
 import com.blinkfox.fenix.consts.Const;
@@ -9,6 +10,8 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextException;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
 
@@ -23,18 +26,25 @@ import org.springframework.util.CollectionUtils;
 @EnableConfigurationProperties(FenixProperties.class)
 public class FenixAutoConfiguration {
 
+    private final ApplicationContext applicationContext;
+
     /**
      * {@link FenixProperties} 属性配置类的实例.
      */
     private final FenixProperties properties;
 
     /**
-     * 构造方法.
+     * 构造方法注入.
      *
+     * @param applicationContext Spring 应用上下文
      * @param properties {@link FenixProperties} 的属性配置对象
      */
     @Autowired
-    public FenixAutoConfiguration(FenixProperties properties) {
+    public FenixAutoConfiguration(ApplicationContext applicationContext, FenixProperties properties) {
+        if (applicationContext == null) {
+            throw new ApplicationContextException("【Fenix 异常】未获取到 Spring 中的 applicationContext 对象!");
+        }
+        this.applicationContext = applicationContext;
         this.properties = properties;
         this.doConfig();
     }
@@ -60,6 +70,9 @@ public class FenixAutoConfiguration {
                 .setXmlLocations(CollectionUtils.isEmpty(xmlLocations) ? null : String.join(Const.COMMA, xmlLocations))
                 .setHandlerLocations(CollectionUtils.isEmpty(handlerLocations) ? null
                         : String.join(Const.COMMA, handlerLocations)));
+
+        // 设置 Spring 应用上下文到 RepositoryModelContext 类中.
+        RepositoryModelContext.setApplicationContext(applicationContext);
 
         // 如果自定义的 predicateHandlers 不为空，就初始化设置值到 配置信息中.
         List<String> predicateHandlers = this.properties.getPredicateHandlers();
