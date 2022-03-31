@@ -8,3 +8,4 @@ fenix:
   handler-locations:
     - com.blinkfox.fenix.starter.handler
     - com.blinkfox.fenix.myhandler
+  underscore-transformer-prefix:

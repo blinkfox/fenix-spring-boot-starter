@@ -56,4 +56,11 @@ class FenixProperties {
      */
     private List<String> predicateHandlers;
 
+    /**
+     * 采用带前缀的下划线转自定义 Bean 时需要移除的前缀集合的字符串，多个前缀字符串用逗号隔开.
+     *
+     * @since v2.7.0
+     */
+    private String underscoreTransformerPrefix;
+
 }

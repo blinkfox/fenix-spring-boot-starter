@@ -26,8 +26,6 @@ import org.springframework.util.CollectionUtils;
 @EnableConfigurationProperties(FenixProperties.class)
 public class FenixAutoConfiguration {
 
-    private final ApplicationContext applicationContext;
-
     /**
      * {@link FenixProperties} 属性配置类的实例.
      */
@@ -44,7 +42,9 @@ public class FenixAutoConfiguration {
         if (applicationContext == null) {
             throw new ApplicationContextException("【Fenix 异常】未获取到 Spring 中的 applicationContext 对象!");
         }
-        this.applicationContext = applicationContext;
+
+        // 设置 Spring 应用上下文到 RepositoryModelContext 类中.
+        RepositoryModelContext.setApplicationContext(applicationContext);
         this.properties = properties;
         this.doConfig();
     }
@@ -67,12 +67,10 @@ public class FenixAutoConfiguration {
                 .setDebug(Boolean.TRUE.equals(debug))
                 .setPrintBanner(printBanner == null || Boolean.TRUE.equals(printBanner))
                 .setPrintSqlInfo(printSql == null ? Boolean.TRUE.equals(showJpaSql) : Boolean.TRUE.equals(printSql))
+                .setUnderscoreTransformerPrefix(this.properties.getUnderscoreTransformerPrefix())
                 .setXmlLocations(CollectionUtils.isEmpty(xmlLocations) ? null : String.join(Const.COMMA, xmlLocations))
                 .setHandlerLocations(CollectionUtils.isEmpty(handlerLocations) ? null
                         : String.join(Const.COMMA, handlerLocations)));
-
-        // 设置 Spring 应用上下文到 RepositoryModelContext 类中.
-        RepositoryModelContext.setApplicationContext(applicationContext);
 
         // 如果自定义的 predicateHandlers 不为空，就初始化设置值到 配置信息中.
         List<String> predicateHandlers = this.properties.getPredicateHandlers();
